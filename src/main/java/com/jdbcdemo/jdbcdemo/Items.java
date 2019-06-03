@@ -1,13 +1,29 @@
 package com.jdbcdemo.jdbcdemo;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="items_table")
 public class Items {//these are the categories in our database
 	private String name;
-	private int quantity;
+	private Integer quantity;
 	private String description;
-	private int id;
-	private double price;
 	
-	public Items(String name, int quantity, String description, int id, double price) {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Integer id;
+	private Double price;
+	
+	public Items() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Items(String name, Integer quantity, String description, Integer id, Double price) {
 		super();
 		this.name = name;
 		this.quantity = quantity;
@@ -16,9 +32,12 @@ public class Items {//these are the categories in our database
 		this.price = price;
 	}
 
-	public Items() {
+	public Items(String name, Integer quantity, String description, Double price) {
 		super();
-		// TODO Auto-generated constructor stub
+		this.name = name;
+		this.quantity = quantity;
+		this.description = description;
+		this.price = price;
 	}
 
 	public String getName() {
@@ -29,11 +48,11 @@ public class Items {//these are the categories in our database
 		this.name = name;
 	}
 
-	public int getQuantity() {
+	public Integer getQuantity() {
 		return quantity;
 	}
 
-	public void setQuantity(int quantity) {
+	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
 	}
 
@@ -45,27 +64,29 @@ public class Items {//these are the categories in our database
 		this.description = description;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public double getPrice() {
+	public Double getPrice() {
 		return price;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 
 	@Override
 	public String toString() {
-		return "Food [name=" + name + ", quantity=" + quantity + ", description=" + description + ", id=" + id
+		return "Items [name=" + name + ", quantity=" + quantity + ", description=" + description + ", id=" + id
 				+ ", price=" + price + "]";
 	}
+	
+	
 	
 }
 	
